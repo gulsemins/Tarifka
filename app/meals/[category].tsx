@@ -34,6 +34,9 @@ const MealsList = () => {
     <View>
       <Stack.Screen
         options={{
+          headerTitleStyle: {
+            color: "#ffa602",
+          },
           title: `Meals with ${category}`,
         }}
       />

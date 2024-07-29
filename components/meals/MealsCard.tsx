@@ -17,7 +17,7 @@ const MealCard = (props: Props) => {
     <Pressable
       onPress={() => {
         router.push({
-          pathname: "/meals/mealsList",
+          pathname: "/details/[id]",
           params: { id: props.meals.idMeal },
         });
       }}
@@ -28,13 +28,15 @@ const MealCard = (props: Props) => {
           source={{ uri: props.meals.strMealThumb }}
         />
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>{props.meals.strMeal}</Text>
+          <View style={styles.background}>
+            <Text style={styles.title}>{props.meals.strMeal}</Text>
+          </View>
         </View>
       </View>
     </Pressable>
   );
 };
-
+const windowWidth = Dimensions.get("window").width;
 export default MealCard;
 
 const styles = StyleSheet.create({
@@ -44,10 +46,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 26,
-    fontWeight: "400",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    fontWeight: "bold",
     color: "white",
-    width: "auto",
+    textAlign: "right",
+    marginHorizontal: 10,
   },
   image: {
     flex: 1,
@@ -59,9 +61,16 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     left: 0,
-    right: 20,
-    bottom: 10,
+    right: 0,
+    bottom: 0,
+    padding: 10,
     justifyContent: "flex-end",
     alignItems: "flex-end",
+  },
+  background: {
+    backgroundColor: "rgba(0,0,0,0.5)",
+    width: "100%",
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
   },
 });
