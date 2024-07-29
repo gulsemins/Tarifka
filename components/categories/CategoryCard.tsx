@@ -17,8 +17,8 @@ const CategoryCard = (props: Props) => {
     <Pressable
       onPress={() => {
         router.push({
-          pathname: "/meals/[id]",
-          params: { id: props.category.idCategory },
+          pathname: "/meals/[category]",
+          params: { category: props.category.strCategory },
         });
       }}
     >
