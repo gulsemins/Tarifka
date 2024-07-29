@@ -27,7 +27,9 @@ const MealCard = (props: Props) => {
           style={styles.image}
           source={{ uri: props.meals.strMealThumb }}
         />
-        <Text style={styles.title}>{props.meals.strMeal}</Text>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>{props.meals.strMeal}</Text>
+        </View>
       </View>
     </Pressable>
   );
@@ -43,11 +45,23 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 26,
     fontWeight: "400",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    color: "white",
+    width: "auto",
   },
   image: {
     flex: 1,
     width: "auto",
     height: 200,
     borderRadius: 10,
+  },
+  titleContainer: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 20,
+    bottom: 10,
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
   },
 });
