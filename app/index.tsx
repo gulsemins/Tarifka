@@ -1,6 +1,6 @@
 import { View, FlatList, Text, Button } from "react-native";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CategoryCard from "@/components/categories/CategoryCard";
 
 export interface CategoryType {
@@ -12,7 +12,9 @@ export interface CategoryType {
 
 const Categories = () => {
   const [categories, setCategories] = useState<CategoryType[]>([]);
-
+  useEffect(() => {
+    fetchData();
+  }, []);
   async function fetchData() {
     try {
       const response = await axios.get(
@@ -31,8 +33,6 @@ const Categories = () => {
 
   return (
     <View>
-      <Text>hello </Text>
-      <Button onPress={fetchData} title="fetch" />
       <FlatList
         data={categories}
         renderItem={renderCategoryList}
